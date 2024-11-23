@@ -9,9 +9,17 @@
     }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
+    "target": "ES6",
+    "module": "ESNext",
+    "jsx": "react-jsx",  // Important for JSX transformation
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     }
   }
 }
