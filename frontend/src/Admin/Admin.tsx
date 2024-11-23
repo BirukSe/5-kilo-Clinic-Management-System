@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { axiosInstance } from '../lib/axios.ts'; // Assuming axiosInstance is set up correctly
 import { FaEdit, FaTrash } from 'react-icons/fa'; // Importing icons from react-icons
 import { useToast } from "../hooks/use-toast"
@@ -128,6 +128,8 @@ const Admin = () => {
   
 
   return (
+    <>
+    {loading && <Loading />}
     <div className="flex flex-col min-h-screen">
       <h1 className="font-extrabold text-5xl text-custom-blue mt-4">Admin Dashboard</h1>
 
@@ -245,6 +247,7 @@ const Admin = () => {
         </div>
       </footer>
     </div>
+    </>
   );
 };
 

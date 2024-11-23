@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -53,7 +53,7 @@ const EditDoctor = () => {
   useEffect(() => {
     const fetchDoctor = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/doctor/${id}`);
+        const response = await fetch(`https://five-kilo-clinic-management-system-1.onrender.com/doctor/${id}`);
         const data = await response.json();
         console.log(data);
 
@@ -76,7 +76,7 @@ const EditDoctor = () => {
   const onSubmit = async (data) => {
     console.log('Form Submitted:', data);
     try {
-      const response = await fetch(`http://localhost:5000/doctor/editDoctor/${id}`, {
+      const response = await fetch(`https://five-kilo-clinic-management-system-1.onrender.com/doctor/editDoctor/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
