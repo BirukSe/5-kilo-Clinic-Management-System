@@ -3,6 +3,7 @@ import { axiosInstance } from '../../lib/axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { Loading } from '../Loading/Loading';
+import { Link } from 'react-router-dom';
 const Login = () => {
   const { setCurrentUserName , setDoctor, setDoctorId} = useAuthContext();
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ const Login = () => {
     {isLoading && <Loading />}
     <div className="flex flex-col bg-custom-blue text-white min-h-screen">
       <h1 className="font-extrabold flex justify-center text-4xl sm:text-7xl mt-7">
-        Welcome to <span className="text-custom-gray">5 Kilo Clinic</span>
+        Welcome to biruks-projects-76f67f53/5-kilo-clinic-management-system <span className="text-custom-gray">5 Kilo Clinic</span>
       </h1>
       <h2 className="text-white text-lg font-bold flex justify-center pt-11 sm:text-xl">
         Your Health, Our Priority. Trusted Care, Trusted Doctors
@@ -113,7 +114,7 @@ const Login = () => {
             Login
           </button>
           <h3 className="text-custom-blue">
-            Don't have an account <a href="/">Signup</a>
+            Don't have an account <Link to="/">Signup</Link>
           </h3>
         </div>
       </div>

@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import {axiosInstance} from '../../lib/axios.ts'
 import { useAuthContext } from '../../context/AuthContext.tsx';
-
+import { Link } from 'react-router-dom';
 import { Loading } from '../Loading/Loading.tsx';
 const Signup = () => {
   const {setCurrentUserName} = useAuthContext();
@@ -56,7 +56,7 @@ const Signup = () => {
                 <h3 className="mb-2 text-custom-blue font-bold">Password</h3>
                 <input type="password" className=" text-black border border-gray-300 p-2 rounded mb-4" onChange={(e) => setPassword(e.target.value)} value={password}/>
                 <button className="bg-custom-blue text-white font-bold rounded p-2 mt-2" onClick={Signuper}>Signup</button>
-                <h3 className="text-custom-blue">Already have an account? <a href="/login">Login</a></h3>
+                <h3 className="text-custom-blue">Already have an account? <Link to="/login">Login</Link></h3>
             </div>
         </div>
     </div>
