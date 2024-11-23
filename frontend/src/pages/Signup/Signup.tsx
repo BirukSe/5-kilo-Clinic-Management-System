@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import {axiosInstance} from '../../lib/axios.ts'
 import { useAuthContext } from '../../context/AuthContext.tsx';
-import { set } from 'react-hook-form';
+
 import { Loading } from '../Loading/Loading.tsx';
 const Signup = () => {
   const {setCurrentUserName} = useAuthContext();

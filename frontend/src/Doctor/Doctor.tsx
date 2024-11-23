@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../lib/axios';
@@ -8,7 +8,7 @@ import { Loading } from '../pages/Loading/Loading';
 const Doctor = () => {
   const navigate = useNavigate();
   const { doctor, doctorId } = useAuthContext();
-  const [patients, setPatients] = useState([]);
+  const [patients, setPatients] = useState<any>([]);
   const [special, setSpecial] = useState('');
   const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -81,7 +81,7 @@ const Doctor = () => {
               </thead>
               <tbody>
                 {/* Map through the patients array and display their details */}
-                {patients.map((patient, index) => (
+                {patients.map((patient:any, index:number) => (
                   <tr key={patient._id} className="hover:bg-gray-50">
                     <td className="py-3 px-4">{index + 1}</td>
                     <td className="py-3 px-4">{patient.name}</td>

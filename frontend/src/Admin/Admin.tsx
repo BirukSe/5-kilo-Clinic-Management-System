@@ -6,7 +6,7 @@ import { ToastAction } from "../components/ui/toast"
 import { Button } from '../components/ui/button.tsx';
 import { useNavigate } from 'react-router-dom';
 import { Loading } from '../pages/Loading/Loading.tsx';
-import { set } from 'react-hook-form';
+
 const Admin = () => {
   const navigate=useNavigate();
   const [loading, setLoading] = useState(true);
@@ -52,7 +52,7 @@ const Admin = () => {
   }, []);
 
   // Edit and delete handlers (you can customize these handlers)
-  const handleEdit = (id) => {
+  const handleEdit = (id:number) => {
     setLoading(true);
     try{
       console.log('Edit patient with id:', id);
@@ -67,7 +67,7 @@ const Admin = () => {
     
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id:number) => {
     setLoading(true);
     try {
       // Send DELETE request to the backend
@@ -98,7 +98,7 @@ const Admin = () => {
       setLoading(false);
     }
   };
-  const handlePatientDelete=async(id)=>{
+  const handlePatientDelete=async(id:number)=>{
     setLoading(true);
     try{
       console.log('Delete patient with id:', id);
@@ -112,7 +112,7 @@ const Admin = () => {
       setLoading(false);
     }
   }
-  const handlePatientEdit=(id)=>{
+  const handlePatientEdit=(id:number)=>{
     try{
       setLoading(true);
       console.log('Edit patient with id:', id);
@@ -169,22 +169,22 @@ const Admin = () => {
               </tr>
             </thead>
             <tbody>
-              {array.map((patient) => (
+            {array.map((patient) => (
                 <tr key={patient.id} className="hover:bg-gray-50">
                   <td className="py-3 px-4">{count++}</td>
                   <td className="py-3 px-4">{patient.name}</td>
-                  <td className="py-3 px-4">{patient.illness}</td>
+                  <td className="py-3 px-4">{patient.condition}</td>
                   <td className="py-3 px-4">
                     <div className="flex space-x-4">
                       {/* Edit Icon */}
                       <FaEdit 
                         className="text-blue-500 cursor-pointer" 
-                        onClick={() => handlePatientEdit(patient._id)} 
+                        onClick={() => handlePatientEdit(patient.id)} 
                       />
                       {/* Delete Icon */}
                       <FaTrash 
                         className="text-red-500 cursor-pointer" 
-                        onClick={() => handlePatientDelete(patient._id)} 
+                        onClick={() => handlePatientDelete(patient.id)} 
                       />
                     </div>
                   </td>
@@ -220,12 +220,12 @@ const Admin = () => {
                       {/* Edit Icon */}
                       <FaEdit 
                         className="text-blue-500 cursor-pointer" 
-                        onClick={() => handleEdit(doctor._id)} 
+                        onClick={() => handleEdit(doctor.id)} 
                       />
                       {/* Delete Icon */}
                       <FaTrash 
                         className="text-red-500 cursor-pointer" 
-                        onClick={() => handleDelete(doctor._id)} 
+                        onClick={() => handleDelete(doctor.id)} 
                       />
                     </div>
                   </td>

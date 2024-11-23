@@ -119,10 +119,10 @@
 // };
 
 // export default Details;
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaEdit, FaSave } from 'react-icons/fa'; // Added FaSave for save button
 import { useParams } from 'react-router-dom';
-import { useAuthContext } from '../../context/AuthContext';
+
 import { axiosInstance } from '../../lib/axios';
 
 const Details = () => {
@@ -132,7 +132,7 @@ const Details = () => {
   const [diagnosis, setDiagnosis] = useState('');
   const [isConditionEditable, setIsConditionEditable] = useState(false); // State for condition editing
   const [isDiagnosisEditable, setIsDiagnosisEditable] = useState(false); // State for diagnosis editing
-  const { doctorId } = useAuthContext();
+ 
   const { id } = useParams();
 
   useEffect(() => {

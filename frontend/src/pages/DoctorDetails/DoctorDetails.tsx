@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosInstance } from '../../lib/axios';
 import { useNavigate } from 'react-router-dom';
@@ -7,16 +7,21 @@ const DoctorDetails = () => {
   const { id } = useParams(); // Get the doctor ID from the URL parameters
   const [doctor, setDoctor] = useState<any>(null); // Store doctor details
   const [loading, setLoading] = useState<boolean>(false); // Handle loading state for appointment
-  const [error, setError] = useState<string | null>(null); // Handle any errors from booking appointment
+ const [error, setError] = useState<string | null>(null);
 
   // Fetch doctor data from API
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       try {
-        const response = await axiosInstance.get(`http://localhost:5000/doctor/${id}`);
+        const response = await axiosInstance.get(`/doctor/${id}`);
         setDoctor(response.data);
       } catch (error) {
+        setError('Failed to load doctor data. Please try again later.');
         console.error("Error fetching doctor details:", error);
+      }
+      finally{
+        setLoading(false);
       }
     };
 

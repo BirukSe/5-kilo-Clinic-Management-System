@@ -66,11 +66,23 @@
 // };
 
 // export default Patient;
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { axiosInstance } from '../lib/axios';
 import { Link } from 'react-router-dom';
 
+/*************  ✨ Codeium Command ⭐  *************/
+/**
+ * The Patient component renders the profile page for a logged-in user.
+ *
+ * The page displays the user's username, and a table of doctors with their
+ * specializations and names. Each doctor's row has a "Details" link that
+ * navigates to the doctor's details page.
+ *
+ * The page also includes a footer with copyright information and a message
+ * indicating who designed the page.
+ */
+/******  74dfaf8d-2742-4eb7-8e1f-74a72a351a50  *******/
 const Patient = () => {
   const { currentUserName } = useAuthContext();
   const [array, setArray] = useState<any>([]);

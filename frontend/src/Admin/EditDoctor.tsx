@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -73,7 +73,7 @@ const EditDoctor = () => {
   }, [id, form]);
 
   // Define the onSubmit function
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     console.log('Form Submitted:', data);
     try {
       const response = await fetch(`https://five-kilo-clinic-management-system-1.onrender.com/doctor/editDoctor/${id}`, {
@@ -83,8 +83,12 @@ const EditDoctor = () => {
         },
         body: JSON.stringify(data),
       });
-      alert('Doctor updated successfully');
-      navigate('/admin');
+      if(response.ok){
+        
+        alert('Doctor updated successfully');
+        navigate('/admin');
+      }
+     
     } catch (error) {
       console.log(error);
     }

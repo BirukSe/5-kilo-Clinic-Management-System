@@ -1,9 +1,10 @@
-import React from 'react';
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useParams } from 'react-router-dom';
-
+import { SubmitHandler } from 'react-hook-form';
+import {  FieldValues } from 'react-hook-form';
 import { Button } from '../../components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -43,7 +44,7 @@ const AddPatient = () => {
   });
 
   // Define the onSubmit function
-  const onSubmit = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data: FieldValues) => {
     console.log('Form Submitted:', data);
     try{
       const response=await fetch(`https://five-kilo-clinic-management-system-1.onrender.com/doctor/addpatient/${id}`, {
@@ -53,8 +54,12 @@ const AddPatient = () => {
         },
         body: JSON.stringify(data),
       })
-      alert('Appointment Scheduled! You will be contacted soon');
+      if(response.ok){
+        alert('Appointment Scheduled! You will be contacted soon');
       navigate('/patient');
+        
+      }
+      
 
 
     }
