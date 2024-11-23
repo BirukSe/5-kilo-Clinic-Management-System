@@ -53,6 +53,7 @@ const Admin = () => {
 
   // Edit and delete handlers (you can customize these handlers)
   const handleEdit = (id:any) => {
+    console.log("dd",id);
     setLoading(true);
     try{
       console.log('Edit patient with id:', id);
@@ -70,6 +71,7 @@ const Admin = () => {
   const handleDelete = async (id:any) => {
     setLoading(true);
     try {
+      console.log("dd",id);
       // Send DELETE request to the backend
       const response = await axiosInstance.delete(`/auth/deleteDoctor/${id}`);
       console.log('Doctor deleted:', response.data);
@@ -98,33 +100,65 @@ const Admin = () => {
       setLoading(false);
     }
   };
-  const handlePatientDelete=async(id:any)=>{
-    setLoading(true);
-    try{
-      console.log('Delete patient with id:', id);
-      const response = await axiosInstance.delete(`/auth/deletePatient/${id}`);
-      console.log('Patient deleted:', response.data);
-      setArray(array.filter(patient => patient.id !== id));
-    }
-    catch(error){
-      console.log("Error deleting patient:", error);
-    }finally{
-      setLoading(false);
-    }
-  }
-  const handlePatientEdit=(id:any)=>{
-    try{
-      setLoading(true);
-      console.log('Edit patient with id:', id);
-      navigate(`/editPatient/${id}`);
+  // const handlePatientDelete=async(id:any)=>{
+  //   console.log("dd",id);
+  //   setLoading(true);
+  //   try{
+  //     console.log('Delete patient with id:', id);
+  //     const response = await axiosInstance.delete(`/auth/deletePatient/${id}`);
+  //     console.log('Patient deleted:', response.data);
+  //     setArray(array.filter(patient => patient._id !== id));
+  //   }
+  //   catch(error){
+  //     console.log("Error deleting patient:", error);
+  //   }finally{
+  //     setLoading(false);
+  //   }
+  // }
+  // const handlePatientEdit=(id:any)=>{
+  //   console.log("dd",id);
+  //   try{
+  //     setLoading(true);
+  //     console.log('Edit patient with id:', id);
+  //     navigate(`/editPatient/${id}`);
 
-    }catch(error){
-      console.log(error);
-    }finally{
-      setLoading(false);
-    }
+  //   }catch(error){
+  //     console.log(error);
+  //   }finally{
+  //     setLoading(false);
+  //   }
   
+  // }
+  // Edit handler for patient
+const handlePatientEdit = (id: any) => {
+  console.log("Patient ID for edit:", id);
+  try {
+    setLoading(true);
+    console.log('Edit patient with id:', id);
+    navigate(`/editPatient/${id}`);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
   }
+};
+
+// Delete handler for patient
+const handlePatientDelete = async (id: any) => {
+  console.log("Patient ID for delete:", id);
+  setLoading(true);
+  try {
+    console.log('Delete patient with id:', id);
+    const response = await axiosInstance.delete(`/auth/deletePatient/${id}`);
+    console.log('Patient deleted:', response.data);
+    setArray(array.filter(patient => patient._id !== id)); // Use _id here instead of id
+  } catch (error) {
+    console.log("Error deleting patient:", error);
+  } finally {
+    setLoading(false);
+  }
+};
+
   
 
   return (
@@ -170,26 +204,27 @@ const Admin = () => {
             </thead>
             <tbody>
             {array.map((patient) => (
-                <tr key={patient._id} className="hover:bg-gray-50">
-                  <td className="py-3 px-4">{count++}</td>
-                  <td className="py-3 px-4">{patient.name}</td>
-                  <td className="py-3 px-4">{patient.condition}</td>
-                  <td className="py-3 px-4">
-                    <div className="flex space-x-4">
-                      {/* Edit Icon */}
-                      <FaEdit 
-                        className="text-blue-500 cursor-pointer" 
-                        onClick={() => handlePatientEdit(patient._id)} 
-                      />
-                      {/* Delete Icon */}
-                      <FaTrash 
-                        className="text-red-500 cursor-pointer" 
-                        onClick={() => handlePatientDelete(patient._id)} 
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
+  <tr key={patient._id} className="hover:bg-gray-50"> {/* Use _id here */}
+    <td className="py-3 px-4">{count++}</td>
+    <td className="py-3 px-4">{patient.name}</td>
+    <td className="py-3 px-4">{patient.condition}</td>
+    <td className="py-3 px-4">
+      <div className="flex space-x-4">
+        {/* Edit Icon */}
+        <FaEdit 
+          className="text-blue-500 cursor-pointer" 
+          onClick={() => handlePatientEdit(patient._id)} // Use _id here
+        />
+        {/* Delete Icon */}
+        <FaTrash 
+          className="text-red-500 cursor-pointer" 
+          onClick={() => handlePatientDelete(patient._id)} // Use _id here
+        />
+      </div>
+    </td>
+  </tr>
+))}
+
             </tbody>
           </table>
         </div>
