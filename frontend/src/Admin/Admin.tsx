@@ -14,15 +14,15 @@ const Admin = () => {
   let docCount=1;
   const { toast } = useToast();
   const [array, setArray] = useState([
-    { id: 1, name: "John Doe", condition: "Flu" },
-    { id: 2, name: "Jane Smith", condition: "Back Pain" },
-    { id: 3, name: "Samuel Adams", condition: "Cold" },
+    { _id: 1, name: "John Doe", condition: "Flu" },
+    { _id: 2, name: "Jane Smith", condition: "Back Pain" },
+    { _id: 3, name: "Samuel Adams", condition: "Cold" },
   ]);
 
   const [doctors, setDoctors] = useState([
-    { id: 1, name: "Dr. Emily Johnson", specialization: "Cardiology" },
-    { id: 2, name: "Dr. Sarah Smith", specialization: "Dentistry" },
-    { id: 3, name: "Dr. Michael Brown", specialization: "Orthopedics" },
+    { _id: 1, name: "Dr. Emily Johnson", specialization: "Cardiology" },
+    { _id: 2, name: "Dr. Sarah Smith", specialization: "Dentistry" },
+    { _id: 3, name: "Dr. Michael Brown", specialization: "Orthopedics" },
   ]);
 
   const [patientClicked, setPatientClicked] = useState(false);
@@ -52,7 +52,7 @@ const Admin = () => {
   }, []);
 
   // Edit and delete handlers (you can customize these handlers)
-  const handleEdit = (id:number) => {
+  const handleEdit = (id:any) => {
     setLoading(true);
     try{
       console.log('Edit patient with id:', id);
@@ -67,7 +67,7 @@ const Admin = () => {
     
   };
 
-  const handleDelete = async (id:number) => {
+  const handleDelete = async (id:any) => {
     setLoading(true);
     try {
       // Send DELETE request to the backend
@@ -98,7 +98,7 @@ const Admin = () => {
       setLoading(false);
     }
   };
-  const handlePatientDelete=async(id:number)=>{
+  const handlePatientDelete=async(id:any)=>{
     setLoading(true);
     try{
       console.log('Delete patient with id:', id);
@@ -112,7 +112,7 @@ const Admin = () => {
       setLoading(false);
     }
   }
-  const handlePatientEdit=(id:number)=>{
+  const handlePatientEdit=(id:any)=>{
     try{
       setLoading(true);
       console.log('Edit patient with id:', id);
@@ -170,7 +170,7 @@ const Admin = () => {
             </thead>
             <tbody>
             {array.map((patient) => (
-                <tr key={patient.id} className="hover:bg-gray-50">
+                <tr key={patient._id} className="hover:bg-gray-50">
                   <td className="py-3 px-4">{count++}</td>
                   <td className="py-3 px-4">{patient.name}</td>
                   <td className="py-3 px-4">{patient.condition}</td>
@@ -179,12 +179,12 @@ const Admin = () => {
                       {/* Edit Icon */}
                       <FaEdit 
                         className="text-blue-500 cursor-pointer" 
-                        onClick={() => handlePatientEdit(patient.id)} 
+                        onClick={() => handlePatientEdit(patient._id)} 
                       />
                       {/* Delete Icon */}
                       <FaTrash 
                         className="text-red-500 cursor-pointer" 
-                        onClick={() => handlePatientDelete(patient.id)} 
+                        onClick={() => handlePatientDelete(patient._id)} 
                       />
                     </div>
                   </td>
@@ -211,7 +211,7 @@ const Admin = () => {
             </thead>
             <tbody>
               {doctors.map((doctor) => (
-                <tr key={doctor.id} className="hover:bg-gray-50">
+                <tr key={doctor._id} className="hover:bg-gray-50">
                   <td className="py-3 px-4">{docCount++}</td>
                   <td className="py-3 px-4">{doctor.name}</td>
                   <td className="py-3 px-4">{doctor.specialization}</td>
@@ -220,12 +220,12 @@ const Admin = () => {
                       {/* Edit Icon */}
                       <FaEdit 
                         className="text-blue-500 cursor-pointer" 
-                        onClick={() => handleEdit(doctor.id)} 
+                        onClick={() => handleEdit(doctor._id)} 
                       />
                       {/* Delete Icon */}
                       <FaTrash 
                         className="text-red-500 cursor-pointer" 
-                        onClick={() => handleDelete(doctor.id)} 
+                        onClick={() => handleDelete(doctor._id)} 
                       />
                     </div>
                   </td>
