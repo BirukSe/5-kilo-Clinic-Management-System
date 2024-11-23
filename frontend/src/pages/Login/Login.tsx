@@ -87,7 +87,7 @@ const Login = () => {
     {isLoading && <Loading />}
     <div className="flex flex-col bg-custom-blue text-white min-h-screen">
       <h1 className="font-extrabold flex justify-center text-4xl sm:text-7xl mt-7">
-        Welcome to 5-kilo-clinic-management-system <span className="text-custom-gray">5 Kilo Clinic</span>
+        Welcome to <span className="text-custom-gray"> 5 Kilo Clinic</span>
       </h1>
       <h2 className="text-white text-lg font-bold flex justify-center pt-11 sm:text-xl">
         Your Health, Our Priority. Trusted Care, Trusted Doctors

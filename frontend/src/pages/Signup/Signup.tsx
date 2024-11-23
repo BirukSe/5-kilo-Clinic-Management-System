@@ -35,7 +35,7 @@ const Signup = () => {
     <>
     {isLoading && <Loading />}
     <div className="flex flex-col bg-custom-blue text-white min-h-screen">
-        <h1 className="font-extrabold flex justify-center text-7xl mt-7">Welcome to <span className="text-custom-gray">5 Kilo Clinic</span></h1>
+        <h1 className="font-extrabold flex justify-center text-7xl mt-7">Welcome to <span className="text-custom-gray"> 5 Kilo Clinic</span></h1>
         <h2 className="text-white text-xl font-bold flex justify-center pt-11">Your Health, Our Priority. Trusted Care, Trusted Doctors</h2>
         
         
