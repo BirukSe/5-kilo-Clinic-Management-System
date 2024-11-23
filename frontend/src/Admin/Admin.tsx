@@ -77,7 +77,7 @@ const Admin = () => {
       console.log('Doctor deleted:', response.data);
   
       // Remove doctor from the local state after successful deletion
-      setDoctors(doctors.filter(doctor => doctor.id !== id));
+      setDoctors(doctors.filter(doctor => doctor._id !== id));
   
       // Show toast notification and log to verify
       console.log("Showing toast...");
