@@ -46,7 +46,7 @@ const AddPatient = () => {
   const onSubmit = async (data) => {
     console.log('Form Submitted:', data);
     try{
-      const response=await fetch(`http://localhost:5000/doctor/addpatient/${id}`, {
+      const response=await fetch(`https://five-kilo-clinic-management-system-1.onrender.com/doctor/addpatient/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

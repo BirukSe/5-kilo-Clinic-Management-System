@@ -19,7 +19,7 @@ const Doctor = () => {
       setIsLoading(true);
       try {
         console.log('doctor id', doctorId);
-        const response = await fetch(`http://localhost:5000/doctor/getPatients/${doctorId}`);
+        const response = await fetch(`https://five-kilo-clinic-management-system-1.onrender.com/doctor/getPatients/${doctorId}`);
         const data = await response.json();
         setPatients(data);
       } catch (error) {
@@ -32,7 +32,7 @@ const Doctor = () => {
 
     const fetchDoctor = async () => {
       try {
-        const res = await axiosInstance.get(`http://localhost:5000/doctor/${doctorId}`);
+        const res = await axiosInstance.get(`/doctor/${doctorId}`);
         console.log(res);
         setSpecial(res.data.specialization);
         setName(res.data.name);

@@ -78,7 +78,7 @@ const Patient = () => {
   useEffect(() => {
     const getDoctor = async () => {
       try {
-        const response = await axiosInstance.get('http://localhost:5000/doctor');
+        const response = await axiosInstance.get('/doctor');
         setArray(response.data);
       } catch (error) {
         console.error("Error fetching doctors:", error);

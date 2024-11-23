@@ -32,10 +32,10 @@ const Admin = () => {
     async function getData() {
       setLoading(true);
       try {
-        const response = await axiosInstance.get('http://localhost:5000/patient');
+        const response = await axiosInstance.get('/patient');
         console.log(response.data);
         setArray(response.data); 
-        const res=await axiosInstance.get('http://localhost:5000/doctor');
+        const res=await axiosInstance.get('/doctor');
         console.log(res.data);
         setDoctors(res.data);
         // Update the state with the fetched patients data
@@ -71,7 +71,7 @@ const Admin = () => {
     setLoading(true);
     try {
       // Send DELETE request to the backend
-      const response = await axiosInstance.delete(`http://localhost:5000/auth/deleteDoctor/${id}`);
+      const response = await axiosInstance.delete(`/auth/deleteDoctor/${id}`);
       console.log('Doctor deleted:', response.data);
   
       // Remove doctor from the local state after successful deletion
@@ -102,7 +102,7 @@ const Admin = () => {
     setLoading(true);
     try{
       console.log('Delete patient with id:', id);
-      const response = await axiosInstance.delete(`http://localhost:5000/auth/deletePatient/${id}`);
+      const response = await axiosInstance.delete(`/auth/deletePatient/${id}`);
       console.log('Patient deleted:', response.data);
       setArray(array.filter(patient => patient.id !== id));
     }

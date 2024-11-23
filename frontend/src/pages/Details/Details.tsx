@@ -138,7 +138,7 @@ const Details = () => {
   useEffect(() => {
     const fetchPatient = async () => {
       try {
-        const response = await axiosInstance.get(`http://localhost:5000/patient/${id}`);
+        const response = await axiosInstance.get(`/patient/${id}`);
         setName(response.data.name);
         setEmail(response.data.email);
         setCondition(response.data.illness);
@@ -153,7 +153,7 @@ const Details = () => {
   // Handle condition save
   const handleSaveCondition = async () => {
     try {
-      const response = await axiosInstance.put(`http://localhost:5000/patient/editPatient/${id}`, {
+      const response = await axiosInstance.put(`/patient/editPatient/${id}`, {
         illness: condition,
       });
       console.log("Updated condition:", response.data);
@@ -166,7 +166,7 @@ const Details = () => {
   // Handle diagnosis save
   const handleSaveDiagnosis = async () => {
     try {
-      const response = await axiosInstance.put(`http://localhost:5000/patient/editPatient/${id}`, {
+      const response = await axiosInstance.put(`/patient/editPatient/${id}`, {
         diagnosis: diagnosis,
       });
       console.log("Updated diagnosis:", response.data);

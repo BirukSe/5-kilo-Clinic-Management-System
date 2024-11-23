@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { axiosInstance } from '../../lib/axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
-import Loading from '../Loading/Loading';
+import { Loading } from '../Loading/Loading';
 const Login = () => {
   const { setCurrentUserName , setDoctor, setDoctorId} = useAuthContext();
   const navigate = useNavigate();
