@@ -8,6 +8,18 @@ You can view the deployed version of the clinic management system by visiting th
 
 [**5 Kilo Clinic Management System - Live Demo**](https://5-kilo-clinic-management-system.vercel.app/)
 
+## Video Demo
+
+Watch a quick video walkthrough of the **5 Kilo Clinic Management System** to see how it works:
+
+[**Video Demo**](clinic.mp4)
+
+Alternatively, if your video is hosted on platforms like YouTube or Vimeo, you can embed it directly:
+
+[![5 Kilo Clinic Management System - Video Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+> Replace `YOUR_VIDEO_ID` with the actual video ID from YouTube or the link to your video file.
+
 ## Screenshot
 
 Here is a screenshot of the **5 Kilo Clinic Management System**:
