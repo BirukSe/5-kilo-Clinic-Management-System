@@ -12,7 +12,7 @@ You can view the deployed version of the clinic management system by visiting th
 
 Here is a screenshot of the **5 Kilo Clinic Management System**:
 
-![Clinic Management System Screenshot](./assets/images/screenshot.png)
+![Clinic Management System Screenshot](./photo.png)
 
 ## Features
 
